@@ -16,7 +16,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -75,6 +75,14 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="mt-auto">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="{{ url('/') }}" class="nav-link px-2 text-muted">Bienvenido</a></li>
+            <li class="nav-item"><a href="{{ url('/news')}}" class="nav-link px-2 text-muted">Actualizaciones</a></li>
+            <li class="nav-item"><a href="{{ url('/about-me')}}" class="nav-link px-2 text-muted">Acerca de</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2024 YourBlog, Team</p>
+        </footer>
     </div>
 </body>
 </html>

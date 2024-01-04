@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<main>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-bg-8 ">
@@ -22,17 +23,17 @@
                         </h3>
                     </div>
                 </div>
-
                 <div class="row mt-3 justify-content-center ">
                     <div class="feature col-md-4 m-2">
-                        <div class="card">
-                            <div class="card-header bg-primary">
+                        <div class="card pb-2">
+                            <div class="card-header bg-primary mb-3">
                                 <h4 class="text-center m-1">Crea tus articulos</h2>
                             </div>
                             <div class="card-body">
-                                <img src="..\img\article.jpg" class="rounded mx-auto d-block">
+                                <img src="..\img\article.jpg" class="rounded mx-auto d-block pb-4">
                                 <p class="mx-3">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur suscipit mollitia quibusdam tenetur iste fugit. Deleniti labore explicabo officia quisquam hic accusantium non in.
+                                    En Your Blog te brindamos la capacidad de crear tus propios articulos en los cuales puedes agregar desde texto a imagenes,
+                                    ademas de darte la opcion de elegir el tipo de presentacion al articulo que creas.
                                 </p>
                             </div>
                         </div>
@@ -43,22 +44,23 @@
                                 <h4 class="text-center m-1">Crea tus etiquetas</h2>
                             </div>
                             <div class="card-body">
-                                <img src="..\img\article.jpg" class="rounded mx-auto d-block">
+                                <img src="..\img\tag.jpg" class="img-thumbnail">
                                 <p class="mx-3">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur suscipit mollitia quibusdam tenetur iste fugit. Deleniti labore explicabo officia quisquam hic accusantium non in.
+                                    En Your Blog te damos la posibilidad de crear etiquetas de temas especificos de los cuales puedes clasificar tus articulos con ellas.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="feature col-md-4 m-2">
                         <div class="card">
-                            <div class="card-header bg-primary">
+                            <div class="card-header bg-primary mb-4">
                                 <h4 class="text-center m-1">Crea tus categorias</h2>
                             </div>
                             <div class="card-body">
-                                <img src="..\img\article.jpg" class="rounded mx-auto d-block">
+                                <img src="..\img\category.png" class="rounded mx-auto d-block mb-4">
                                 <p class="mx-3">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur suscipit mollitia quibusdam tenetur iste fugit. Deleniti labore explicabo officia quisquam hic accusantium non in.
+                                    En your blog te damos la capacidad de crear carpetas de articulos en las cuales se clasifican a 
+                                    travez de categorias en las que con una descripcion permitiras a los lectores ver tus articulos relacionados.
                                 </p>
                             </div>
                         </div>
@@ -67,4 +69,5 @@
             </div>
         </div>
     </div>
+</main>
 @endsection
