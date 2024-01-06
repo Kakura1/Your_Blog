@@ -29,3 +29,5 @@ Route::get('/about-me', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/view-profile', [App\Http\Controllers\HomeController::class, 'view_profile'])->name('view-profile');
