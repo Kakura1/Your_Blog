@@ -1,7 +1,7 @@
 @extends('layouts.dashboard-template')
 
 @section('title')
-    YB - Inicio
+    YB - Ver Perfil
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
                     <form>
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Nombres</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus disabled="true">
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-end">Apellido</label>
+                            <label for="lastname" class="col-md-4 col-form-label text-md-end">Apellidos</label>
 
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ Auth::user()->lastname }}" required autocomplete="lastname"  disabled="true">
