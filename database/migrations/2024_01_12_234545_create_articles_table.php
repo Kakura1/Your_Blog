@@ -20,14 +20,14 @@ return new class extends Migration
             $table->enum('presentation', ['Formal', 'Informal']);
             $table->boolean('isPublic');
             $table->foreignId('user_id')->constrained(
-                table: 'users', indexName: 'categories_user_id'
+                table: 'users', indexName: 'articles_user_id'
             );
             $table->foreignId('category_id')->constrained(
-                table: 'categories', indexName: 'categories_user_id'
-            );
+                table: 'categories', indexName: 'articles_category_id'
+            )->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tag_id')->constrained(
-                table: 'tags', indexName: 'categories_user_id'
-            );
+                table: 'tags', indexName: 'articles_tag_id'
+            )->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
