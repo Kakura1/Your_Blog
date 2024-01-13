@@ -23,10 +23,10 @@ return new class extends Migration
                 table: 'users', indexName: 'categories_user_id'
             );
             $table->foreignId('category_id')->constrained(
-                table: 'users', indexName: 'categories_user_id'
+                table: 'categories', indexName: 'categories_user_id'
             );
             $table->foreignId('tag_id')->constrained(
-                table: 'users', indexName: 'categories_user_id'
+                table: 'tags', indexName: 'categories_user_id'
             );
             $table->timestamps();
         });
