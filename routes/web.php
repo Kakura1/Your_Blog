@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +32,10 @@ Route::get('/about-me', function() {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/view-profile', [App\Http\Controllers\HomeController::class, 'view_profile'])->name('view-profile');
+Route::get('/view-profile', [HomeController::class, 'view_profile'])->name('view-profile');
+
+Route::resource('categories', CategoryController::class);
+Route::resource('tags', TagController::class);
+Route::resource('articles', ArticleController::class);

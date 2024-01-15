@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header mt-1">
                     <h2 class="text-center">
-                        Yourblog
+                        Yourblog - Administrador de categorias
                     </h2>
                 </div>
 

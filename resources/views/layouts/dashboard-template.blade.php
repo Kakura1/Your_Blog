@@ -59,8 +59,10 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar sesion') }}
+                                    </a>    
+                                    <a class="dropdown-item" href="home">
+                                      Inicio
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -125,7 +127,7 @@
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="{{ url('/') }}" class="nav-link px-2 text-muted">Bienvenido</a></li>
             <li class="nav-item"><a href="{{ url('/news')}}" class="nav-link px-2 text-muted">Actualizaciones</a></li>
-            <li class="nav-item"><a href="{{ url('/about-me')}}" class="nav-link px-2 text-muted">Acerca de</a></li>
+            <li class="nav-item"><a href="{{ url('/about-me')}}" class="nav-link px-2 text-muted">Acerca de nosotros</a></li>
             </ul>
             <p class="text-center text-muted">© 2024 YourBlog, Team</p>
         </footer>
