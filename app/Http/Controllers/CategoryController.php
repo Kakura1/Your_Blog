@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\task;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('category', ['categories' => $categories]);
     }
 
     /**
@@ -29,13 +30,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->category = $request->category;
+        $category->description = $request->description;
+        $category->image = $request->image;
+        $category->isPublic = true;
+        $category->user_id = $request->id_user;
+        $category->save();
+        return redirect()->route('categories.index')->with([
+            'toast' => [
+                'type' => 'success',
+                'message' => 'categoria creada exitosamente',
+            ],
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(task $task)
+    public function show(Category $category)
     {
         //
     }
@@ -43,7 +56,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(task $task)
+    public function edit(Category $category)
     {
         //
     }
@@ -51,7 +64,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, task $task)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -59,7 +72,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(task $task)
+    public function destroy(Category $category)
     {
         //
     }

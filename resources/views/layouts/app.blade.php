@@ -54,15 +54,30 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end place-content-end" aria-labelledby="navbarDropdown">   
+                                    <a class="dropdown-item" href="view-profile">Ver Perfil</a>
+                                    <hr class="dropdown-divider">  
+                                    <a class="dropdown-item" href="home">
+                                      Inicio
+                                    </a>
+                                    <a href="#publish" class="dropdown-item" aria-current="page">
+                                      Publicaciones
+                                    </a>
+                                    <a href="/articles" class="dropdown-item">
+                                      Articulos
+                                    </a>
+                                    <a href="/tags" class="dropdown-item">
+                                      Etiquetas
+                                    </a>
+                                    <a href="{{ route('categories.index')}}" class="dropdown-item">
+                                      Categorias
+                                    </a>
+                                    <hr class="dropdown-divider">                            
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar sesion') }}
-                                    </a>    
-                                    <a class="dropdown-item" href="home">
-                                      Inicio
-                                    </a>
+                                    </a> 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

@@ -88,19 +88,19 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#article" class="nav-link link-dark">
+                    <a href="/articles" class="nav-link link-dark">
                       <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                       Articulos
                     </a>
                   </li>
                   <li>
-                    <a href="#tag" class="nav-link link-dark">
+                    <a href="/tags" class="nav-link link-dark">
                       <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                       Etiquetas
                     </a>
                   </li>
                   <li>
-                    <a href="#category" class="nav-link link-dark">
+                    <a href="/categories" class="nav-link link-dark">
                       <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                       Categorias
                     </a>

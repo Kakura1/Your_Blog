@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-template')
+@extends('layouts.app')
 
 @section('title')
     YB - Ver Perfil

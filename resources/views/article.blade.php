@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-template')
+@extends('layouts.app')
 
 @section('title')
     YB - Inicio
@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header mt-1">
                     <h2 class="text-center">
-                        Yourblog - Administrador de Articulos
+                        Yourblog - Administrador de articulos
                     </h2>
                 </div>
 
