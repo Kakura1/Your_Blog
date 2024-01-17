@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('category', 40);
             $table->text('description');
-            $table->binary('image');
+            $table->string('image');
             $table->boolean('isPublic');
             $table->foreignId('user_id')->constrained(
                 table: 'users', indexName: 'categories_user_id'

@@ -63,7 +63,7 @@
                               <h5 class="modal-title" id="exampleModalLabel">Creando Categoria</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="{{ route('categories.store') }}" method="POST">
+                            <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
                                 <label class="form-label" for="Category">Categoria:</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -30,10 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|max:2048'
+        ]);
+        
+        $imagenes = $request->file('image')->store('public/imagenes');
+        $url = Storage::url($imagenes);
+
         $category = new Category();
         $category->category = $request->category;
         $category->description = $request->description;
-        $category->image = $request->image;
+        $category->image = $url;
         $category->isPublic = true;
         $category->user_id = $request->id_user;
         $category->save();
