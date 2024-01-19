@@ -77,7 +77,7 @@
                                                         rows="4">{{ $category->description }}</textarea>
                                                     <label class="form-label" for="Image">Imagen:</label>
                                                     <img src="{{ $category->image }}" class="img-thumbnail">
-                                                    <label for="changeImage" class="form-label">Cambiar Imagen:</label>
+                                                    <label for="changeImage" class="form-label mx-1">Cambiar Imagen:</label>
                                                     <input class="form-control" accept="image/*" type="file"
                                                         name="changeImage" id="changeImage">
                                                     <input type="number" name="id_user" value="{{ Auth::user()->id }}"
@@ -170,7 +170,7 @@
                                         </p>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#createCategory">
+                                                data-bs-target="#createCategory{{ Auth::user()->id }}">
                                                 Creala ahora!!!
                                             </button>
                                         </div>
@@ -180,7 +180,7 @@
                         </div>
 
                         <!-- Modal de Crear Categoria -->
-                        <div class="modal fade" id="createCategory" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" id="createCategory{{ Auth::user()->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -214,8 +214,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
