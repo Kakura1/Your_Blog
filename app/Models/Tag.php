@@ -18,7 +18,7 @@ class Tag extends Model
 
     protected $casts = [
         'id' => 'integer',
-        'id_user' => 'integer',
+        'user_id' => 'integer',
         'isPublic' => 'boolean',
     ];
 

@@ -13,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('tag');
+        $tags = Tag::all();
+        return view('tag', ['tags' => $tags]);
     }
 
     /**
@@ -29,7 +30,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = new Tag();
+        $tag->tag = $request->tag;
+        $tag->description = $request->description;
+        $tag->isPublic = true;
+        $tag->user_id = $request->id_user;
+        $tag->save();
+        return redirect()->route('tags.index')->with('message', 'Etiqueta registrada existosamente');
     }
 
     /**
@@ -45,22 +52,28 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-        //
+        Tag::where('id', $id)->update([
+            'tag' => $request->tag,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('tags.index')->with('message', 'Etiqueta actualizada existosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+        return redirect()->route('tags.index')->with('message', 'Etiqueta borrada existosamente');
     }
 }

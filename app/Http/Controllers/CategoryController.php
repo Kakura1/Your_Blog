@@ -45,12 +45,7 @@ class CategoryController extends Controller
         $category->isPublic = true;
         $category->user_id = $request->id_user;
         $category->save();
-        return redirect()->route('categories.index')->with([
-            'toast' => [
-                'type' => 'success',
-                'message' => 'categoria creada exitosamente',
-            ],
-        ]);
+        return redirect()->route('categories.index')->with('message', 'Categoria registrada existosamente');
     }
 
     /**
@@ -58,7 +53,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return redirect()->route('categories.index');
+        
     }
 
     /**
@@ -89,12 +84,11 @@ class CategoryController extends Controller
             ]);
         } else {
             Category::where('id', $id)->update([
-                'category' => $request->categoria,
+                'category' => $request->category,
                 'description' => $request->description,
-                'image' => $request->image,
             ]);
         }
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('message', 'Categoria actualizada existosamente');
     }
 
     /**
@@ -104,6 +98,6 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('message', 'Categoria borrada existosamente');
     }
 }

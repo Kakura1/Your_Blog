@@ -21,6 +21,11 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <div class="row mt-1 text-center">
+                            @if (session('message'))
+                                <button type="button" class="btn btn-success" disabled="true" id="liveToastBtn"> {{ session('message') }} </button>
+                            @endif
+                        </div>
                         <div class="row mt-3 justify-content-center ">
                             @foreach ($categories as $category)
                                 <div class="feature col-md-3 m-2">
@@ -180,8 +185,8 @@
                         </div>
 
                         <!-- Modal de Crear Categoria -->
-                        <div class="modal fade" id="createCategory{{ Auth::user()->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="createCategory{{ Auth::user()->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
