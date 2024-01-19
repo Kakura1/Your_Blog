@@ -58,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -66,22 +66,44 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+
+        if ($request->file() != null) {
+            $request->validate([
+                'changeImage' => 'required|image|max:2048'
+            ]);
+            $imagenes = $request->file('changeImage')->store('public/imagenes');
+            $url = Storage::url($imagenes);
+            
+            Category::where('id', $id)->update([
+                'category' => $request->category,
+                'description' => $request->description,
+                'image' => $url,
+            ]);
+        } else {
+            Category::where('id', $id)->update([
+                'category' => $request->categoria,
+                'description' => $request->description,
+                'image' => $request->image,
+            ]);
+        }
+        return redirect()->route('categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }

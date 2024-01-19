@@ -40,6 +40,9 @@ Route::get('/view-profile', [HomeController::class, 'view_profile'])->name('view
 Route::controller(CategoryController::class)->group(function(){
     Route::get('/categories', 'index')->name('categories.index');
     Route::post('/categories', 'store')->name('categories.store');
+    Route::get('/categories/{id}', 'show')->name('categories.show');
+    Route::put('/categories/{id}', 'update')->name('categories.update');
+    Route::delete('/categories/{id}', 'destroy')->name('categories.destroy');
 });
 
 Route::resource('tags', TagController::class);
