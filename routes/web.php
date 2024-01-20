@@ -53,4 +53,10 @@ Route::controller(TagController::class)->group(function(){
     Route::delete('/tags/{id}', 'destroy')->name('tags.destroy');
 });
 
-Route::resource('articles', ArticleController::class);
+Route::controller(ArticleController::class)->group(function(){
+    Route::get('/articles', 'index')->name('articles.index');
+    Route::post('/articles', 'store')->name('articles.store');
+    Route::get('/articles/{id}', 'show')->name('articles.show');
+    Route::put('/articles/{id}', 'update')->name('articles.update');
+    Route::delete('/articles/{id}', 'destroy')->name('articles.destroy');
+});

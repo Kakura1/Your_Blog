@@ -21,10 +21,9 @@ class Article extends Model
 
     protected $casts = [
         'id' => 'integer',
-        'id_user' => 'integer',
-        'id_category' => 'integer',
-        'id_tag' => 'integer',
-        'isPublic' => 'boolean',
+        'user_id' => 'integer',
+        'category_id' => 'integer',
+        'tag_id' => 'integer',
     ];
 
     public function idUser(): BelongsTo

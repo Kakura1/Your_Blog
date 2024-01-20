@@ -23,10 +23,34 @@
                         @endif
                         <div class="row mt-1 text-center">
                             @if (session('message'))
-                                <button type="button" class="btn btn-success" disabled="true" id="liveToastBtn"> {{ session('message') }} </button>
+                                <button type="button" class="btn btn-success" disabled="true" id="liveToastBtn">
+                                    {{ session('message') }} </button>
                             @endif
                         </div>
                         <div class="row mt-3 justify-content-center ">
+
+                            <div class="feature col-md-4 m-2">
+                                <div class="card" style="height: 100%">
+                                    <div class="card-header bg-primary mb-4">
+                                        <h4 class="text-center m-1">Crea tus categorias</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <img src="..\img\category.png" class="img-fluid rounded mx-auto d-block mb-4">
+                                        <p class="mx-3">
+                                            En your blog te damos la capacidad de crear carpetas de articulos en las cuales
+                                            se clasifican a
+                                            travez de categorias en las que con una descripcion permitiras a los lectores
+                                            ver tus articulos relacionados.
+                                        </p>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#createCategory{{ Auth::user()->id }}">
+                                                Crea una nueva categoria ahora!!!
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @foreach ($categories as $category)
                                 <div class="feature col-md-3 m-2">
                                     <div class="card" style="height: 100%">
@@ -160,28 +184,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="feature col-md-4 m-2">
-                                <div class="card" style="height: 100%">
-                                    <div class="card-header bg-primary mb-4">
-                                        <h4 class="text-center m-1">Crea tus categorias</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        <img src="..\img\category.png" class="img-fluid rounded mx-auto d-block mb-4">
-                                        <p class="mx-3">
-                                            En your blog te damos la capacidad de crear carpetas de articulos en las cuales
-                                            se clasifican a
-                                            travez de categorias en las que con una descripcion permitiras a los lectores
-                                            ver tus articulos relacionados.
-                                        </p>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#createCategory{{ Auth::user()->id }}">
-                                                Creala ahora!!!
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <!-- Modal de Crear Categoria -->
