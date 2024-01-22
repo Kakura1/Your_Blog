@@ -53,8 +53,9 @@ class ArticleController extends Controller
         $article->presentation = $request->presentation;
         $article->isPublic = true;
         $article->user_id = $request->id_user;
-        $article->category_id = $request->id_category;
-        $article->tag_id = $request->id_tag;
+        $article->category_id = $request->category;
+        $article->tag_id = $request->tag;
+        $article->save();
         return redirect(route('articles.index'))->with('message', 'Articulo registrado existosamente');
     }
 
@@ -63,8 +64,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $article = Article::findOrFail($id);
-        return view('view-article', ['article' => $article]);
+
     }
 
     /**
@@ -114,5 +114,11 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $article->delete();
         return redirect(route('articles.index'))->with('message', 'Articulo borrado existosamente');
+    }
+
+    public function view_article($id)
+    {
+        $article = Article::findOrFail($id);
+        return view('view-article', ['article' => $article]);
     }
 }
