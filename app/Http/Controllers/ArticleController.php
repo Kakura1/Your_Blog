@@ -38,6 +38,9 @@ class ArticleController extends Controller
         $request->validate([
             'bannerImage' => 'required|image|max:2048',
             'contentImage' => 'required|image|max:2048',
+            'title' => 'required|min:4|max:100',
+            'content' => 'required|min:40',
+            'presentation' => 'required',
         ]);
         
         $imagenes_1 = $request->file('bannerImage')->store('public/imagenes');
@@ -84,6 +87,9 @@ class ArticleController extends Controller
             $request->validate([
                 'changeImage1' => 'required|image|max:2048',
                 'changeImage2' => 'required|image|max:2048',
+                'title' => 'required|min:4|max:100',
+                'content' => 'required|min:40',
+                'presentation' => 'required',
             ]);
             $imagenes_1 = $request->file('changeImage1')->store('public/imagenes');
             $url_1 = Storage::url($imagenes_1);
@@ -97,6 +103,11 @@ class ArticleController extends Controller
                 'presentation' => $request->presentation,
             ]);            
         } else {
+            $request->validate([
+                'title' => 'required|min:4|max:100',
+                'content' => 'required|min:40',
+                'presentation' => 'required',
+            ]);
             Article::where('id', $id)->update([
                 'title' => $request->title,
                 'content' => $request->content,

@@ -32,7 +32,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|max:2048'
+            'image' => 'required|image|max:2048',
+            'category' => 'required|max:40',
+            'description' => 'required|min:20|max:400',
         ]);
         
         $imagenes = $request->file('image')->store('public/imagenes');
@@ -72,7 +74,9 @@ class CategoryController extends Controller
 
         if ($request->file() != null) {
             $request->validate([
-                'changeImage' => 'required|image|max:2048'
+                'changeImage' => 'required|image|max:2048',
+                'category' => 'required|max:40',
+                'description' => 'required|min:20|max:400',
             ]);
             $imagenes = $request->file('changeImage')->store('public/imagenes');
             $url = Storage::url($imagenes);
@@ -83,6 +87,10 @@ class CategoryController extends Controller
                 'image' => $url,
             ]);
         } else {
+            $request->validate([
+                'category' => 'required|max:40',
+                'description' => 'required|min:20|max:400',
+            ]);
             Category::where('id', $id)->update([
                 'category' => $request->category,
                 'description' => $request->description,

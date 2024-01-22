@@ -30,6 +30,10 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tag' => 'required|max:40',
+            'description' => 'required|max:100',
+        ]);
         $tag = new Tag();
         $tag->tag = $request->tag;
         $tag->description = $request->description;
@@ -60,6 +64,10 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'tag' => 'required|max:40',
+            'description' => 'required|max:100',
+        ]);
         Tag::where('id', $id)->update([
             'tag' => $request->tag,
             'description' => $request->description,
