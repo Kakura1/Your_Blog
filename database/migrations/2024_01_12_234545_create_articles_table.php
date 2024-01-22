@@ -24,10 +24,10 @@ return new class extends Migration
             );
             $table->foreignId('category_id')->constrained(
                 table: 'categories', indexName: 'articles_category_id'
-            )->onUpdate('cascade')->onDelete('cascade');
+            );
             $table->foreignId('tag_id')->constrained(
                 table: 'tags', indexName: 'articles_tag_id'
-            )->onUpdate('cascade')->onDelete('cascade');
+            );
             $table->timestamps();
         });
     }

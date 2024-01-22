@@ -60,16 +60,13 @@
                                     <a class="dropdown-item" href="home">
                                       Inicio
                                     </a>
-                                    <a href="#publish" class="dropdown-item" aria-current="page">
-                                      Publicaciones
-                                    </a>
                                     <a href="/articles" class="dropdown-item">
                                       Articulos
                                     </a>
                                     <a href="/tags" class="dropdown-item">
                                       Etiquetas
                                     </a>
-                                    <a href="{{ route('categories.index')}}" class="dropdown-item">
+                                    <a href="/categories" class="dropdown-item">
                                       Categorias
                                     </a>
                                     <hr class="dropdown-divider">                            

@@ -57,7 +57,7 @@ Route::controller(ArticleController::class)->group(function(){
     Route::get('/articles', 'index')->name('articles.index');
     Route::post('/articles', 'store')->name('articles.store');
     Route::get('/articles/{id}', 'show')->name('articles.show');
-    Route::get('/articles/{id}/view', 'view_article')->name('articles.view');
     Route::put('/articles/{id}', 'update')->name('articles.update');
     Route::delete('/articles/{id}', 'destroy')->name('articles.destroy');
+    Route::get('/articles/{id}/view', 'view_article')->name('articles.view');
 });

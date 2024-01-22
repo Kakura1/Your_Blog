@@ -58,23 +58,20 @@
                                     </div>
                                     <div class="card-body">
                                         <img src="{{ $article->bannerImage }}" class="img-thumbnail">
-                                        <p class="mx-3 mt-2">
-                                            {{ $category->description }}
-                                        </p>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
-                                                data-bs-target="#editCategory{{ $category->id }}">
-                                                Editar Categoria
+                                                data-bs-target="#editArticle{{ $article->id }}">
+                                                Editar Articulo
                                             </button>
                                             <br>
                                             <button type="button" class="btn btn-success m-1" data-bs-toggle="modal"
-                                                data-bs-target="#viewCategory{{ $category->id }}">
-                                                Ver Categoria
+                                                data-bs-target="#viewArticle{{ $article->id }}">
+                                                Ver Articulo
                                             </button>
                                             <br>
                                             <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
-                                                data-bs-target="#deleteCategory{{ $category->id }}">
-                                                Borrar Categoria
+                                                data-bs-target="#deleteArticle{{ $article->id }}">
+                                                Borrar Articulo
                                             </button>
                                         </div>
                                     </div>
@@ -155,7 +152,7 @@
                             </div>
 
                             <!-- Modal de Ver Articulo -->
-                            <div class="modal modal-lg fade" id="viewCategory{{ $category->id }}" tabindex="-1"
+                            <div class="modal modal-lg fade" id="viewCategory{{ $Article->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
