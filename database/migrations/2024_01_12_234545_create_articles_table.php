@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->longText('content');
-            $table->binary('banner_image');
-            $table->binary('content_image');
+            $table->string('banner_image');
+            $table->string('content_image');
             $table->enum('presentation', ['Formal', 'Informal']);
             $table->boolean('isPublic');
             $table->foreignId('user_id')->constrained(

@@ -36,13 +36,13 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'banner_image' => 'required|image|max:2048',
-            'content_image' => 'required|image|max:2048',
+            'bannerImage' => 'required|image|max:2048',
+            'contentImage' => 'required|image|max:2048',
         ]);
         
-        $imagenes_1 = $request->file('banner_image')->store('public/imagenes');
+        $imagenes_1 = $request->file('bannerImage')->store('public/imagenes');
         $url_1 = Storage::url($imagenes_1);
-        $imagenes_2 = $request->file('content_image')->store('public/imagenes');
+        $imagenes_2 = $request->file('contentImage')->store('public/imagenes');
         $url_2 = Storage::url($imagenes_2);
 
         $article = new Article();
@@ -82,12 +82,12 @@ class ArticleController extends Controller
     {
         if ($request->file() != null) {
             $request->validate([
-                'changeImage_1' => 'required|image|max:2048',
-                'changeImage_2' => 'required|image|max:2048',
+                'changeImage1' => 'required|image|max:2048',
+                'changeImage2' => 'required|image|max:2048',
             ]);
-            $imagenes_1 = $request->file('changeImage_1')->store('public/imagenes');
+            $imagenes_1 = $request->file('changeImage1')->store('public/imagenes');
             $url_1 = Storage::url($imagenes_1);
-            $imagenes_2 = $request->file('changeImage_2')->store('public/imagenes');
+            $imagenes_2 = $request->file('changeImage2')->store('public/imagenes');
             $url_2 = Storage::url($imagenes_2);
             Article::where('id', $id)->update([
                 'title' => $request->title,
@@ -119,6 +119,8 @@ class ArticleController extends Controller
     public function view_article($id)
     {
         $article = Article::findOrFail($id);
-        return view('view-article', ['article' => $article]);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('view-article', ['article' => $article,'categories' => $categories,'tags' => $tags]);
     }
 }

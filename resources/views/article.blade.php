@@ -57,7 +57,10 @@
                                         <h4 class="text-center m-1">{{ $article->title }}</h2>
                                     </div>
                                     <div class="card-body">
-                                        <img src="{{ $article->bannerImage }}" class="img-thumbnail">
+                                        <div class="text-center">
+                                            <img src="{{ $article->banner_image }}" class="img-thumbnail">
+                                        </div>
+                                        <p class="mx-3 mt-2">{{ $article->content }}</p>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal"
                                                 data-bs-target="#editArticle{{ $article->id }}">
@@ -73,6 +76,10 @@
                                                 data-bs-target="#deleteArticle{{ $article->id }}">
                                                 Borrar Articulo
                                             </button>
+                                            <br>
+                                            <div class="row text-center">
+                                                <a href="/articles/{{$article->id}}/view" class="btn btn-primary">Visualizar Pagina del Articulo</a>    
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -101,12 +108,16 @@
                                                 <textarea name="content" id="Content" class="form-control" placeholder="Descripcion de la categoria"
                                                     rows="4">{{ $article->content }}</textarea>
                                                 <label class="form-label" for="BannerImage">Imagen del banner:</label>
-                                                <img src="{{ $article->bannerImage }}" class="img-thumbnail">
+                                                <div class="row text-center">
+                                                    <img src="{{ $article->banner_image }}" class="img-thumbnail">
+                                                </div>
                                                 <label for="changeBannerImage" class="form-label mx-1">Cambiar Imagen del banner:</label>
                                                 <input class="form-control" accept="image/*" type="file"
                                                     name="changeImage1" id="changeBannerImage">
-                                                <label class="form-label" for="ContentImage">Imagen del contenido:</label>
-                                                <img src="{{ $article->contentImage }}" class="img-thumbnail">
+                                                <label class="form-label" for="BannerImage">Imagen del Contenido:</label>
+                                                <div class="row text-center">
+                                                    <img src="{{ $article->content_image }}" class="img-thumbnail">
+                                                </div>
                                                 <label for="changeContentImage" class="form-label mx-1">Cambiar Imagen del contenido:</label>
                                                 <input class="form-control" accept="image/*" type="file"
                                                     name="changeImage2" id="changeContentImage">
@@ -122,20 +133,14 @@
                                                 </select>
                                                 <label class="form-label" for="category">Categoria:</label>
                                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                    <option value="{{$article->category_id}}" selected>{{Category::where('id', $article->category_id)->category}}</option>
                                                     @foreach ($categories as $category)
-                                                    @if ($article->category_id != $category->id)
                                                     <option value="{{$category->id}}">{{$category->category}}</option>
-                                                    @endif
                                                     @endforeach
                                                 </select>
                                                 <label class="form-label" for="tag">Etiqueta:</label>
                                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                                    <option value="{{$article->tag_id}}" selected>{{Tag::where('id', $article->tag_id)->tag}}</option>
                                                     @foreach ($tags as $tag)
-                                                    @if ($article->tag_id != $tag->id)
                                                     <option value="{{$tag->id}}">{{$tag->tag}}</option>
-                                                    @endif
                                                     @endforeach
                                                 </select>
                                                 <input type="number" name="id_user" value="{{ Auth::user()->id }}"
@@ -152,7 +157,7 @@
                             </div>
 
                             <!-- Modal de Ver Articulo -->
-                            <div class="modal modal-lg fade" id="viewCategory{{ $Article->id }}" tabindex="-1"
+                            <div class="modal modal-lg fade" id="viewArticle{{ $article->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -172,17 +177,29 @@
                                                 <textarea name="content" id="Content" class="form-control" placeholder="Descripcion de la categoria"
                                                     rows="4" disabled="true">{{ $article->content }}</textarea>
                                                 <label class="form-label" for="Image">Imagen del banner:</label>
-                                                <img src="{{ $article->bannerImage }}" class="img-thumbnail">
-                                                <label class="form-label" for="Image">Imagen del Contenido:</label>
-                                                <img src="{{ $article->contentImage }}" class="img-thumbnail">
+                                                <div class="row text-center">
+                                                    <img src="{{ $article->banner_image }}" class="img-thumbnail">
+                                                </div>
+                                                <label class="form-label" for="Image">Imagen del contenido:</label>
+                                                <div class="row text-center">
+                                                    <img src="{{ $article->content_image }}" class="img-thumbnail">
+                                                </div>
                                                 <label class="form-label" for="Category">Categoria del Articulo:</label>
-                                                <input type="text" name="category" id="Category"
+                                                @foreach ($categories as $category)
+                                                @if ($category->id == $article->category_id)
+                                                    <input type="text" name="tag" id="Tag"
                                                     class="form-control" placeholder="Titulo del articulo"
-                                                    disabled="true" value="{{ Category::where('id', $article->category_id)->category }}">
+                                                    disabled="true" value="{{ $category->category }}">
+                                                @endif
+                                                @endforeach 
                                                 <label class="form-label" for="Tag">Etiqueta del Articulo:</label>
-                                                <input type="text" name="tag" id="Tag"
+                                                @foreach ($tags as $tag)
+                                                @if ($tag->id == $article->tag)
+                                                    <input type="text" name="tag" id="Tag"
                                                     class="form-control" placeholder="Titulo del articulo"
-                                                    disabled="true" value="{{ tag::where('id', $article->tag_id)->tag }}">
+                                                    disabled="true" value="{{ $tag->tag }}">
+                                                @endif
+                                                @endforeach                                                
                                                 <label class="form-label" for="Presentation">Presentacion del Articulo:</label>
                                                 <input type="text" name="presentation" id="Presentation"
                                                     class="form-control" placeholder="Titulo del articulo"
@@ -252,7 +269,7 @@
                                         <label class="form-label" for="BannerImage">Imagen del banner:</label>
                                         <input class="form-control" accept="image/*" type="file" name="bannerImage"
                                             id="BannerImage">
-                                        <label class="form-label" for="ContentImage">Imagen del contentido:</label>
+                                        <label class="form-label" for="ContentImage">Imagen del banner:</label>
                                         <input class="form-control" accept="image/*" type="file" name="contentImage"
                                             id="ContentImage">
                                         <label class="form-label" for="Presentation">Tipo de presentacion:</label>
